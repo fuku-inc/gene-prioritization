@@ -1,0 +1,21 @@
+# For both containers
+OPENAI_API_KEY: "xxxxxx"
+model: "gpt-4-1106-preview"
+
+# For gene_score container
+first_gene_list: ['BCL2L1', 'ALAS2', 'SLC4A1', 'FECH', 'CA1', 'SNCA', 'XK', 'BPGM', 'EPB42', 'GYPB', 'SLC14A1', 'MARCH8', 'GYPE', 'TMOD1', 'KRT1', 'TRIM10', 'TUBB2A', 'SELENBP1', 'FAM46C', 'TNS1', 'PLEK2', 'OSBP2', 'GMPR', 'NFIX', 'GPR146', 'TMCC2', 'IFITL1', 'C14ORF45', 'C1ORF128', 'OR2W3']
+score_example: "[GPX4].\n GPX4 | Glutathione Peroxidase 4 | The GPX4 gene provides instructions for making an enzyme called glutathione peroxidase 4. This enzyme is involved in protecting cells from oxidative damage by neutralizing harmful molecules called reactive oxygen species. Specifically, GPX4 is crucial in preventing lipid peroxidation, a process damaging cell membranes. | There is limited evidence that GPX4 has direct relevance to erythroid cells or erythropoiesis. | No specific references found | 2 | GPX4 is not currently widely used as a biomarker in clinical settings, but there is research suggesting potential uses in the future. | 'Wang, Glutathione peroxidase 4 and vitamin E cooperatively prevent hepatocellular degeneration, 2020, Redox Biology' | 4 | GPX4 is potentially valuable as a blood transcriptional biomarker due to its role in oxidative stress response. However, more research is needed for validation. | 'Banning, Glutathione Peroxidase 4: A new player in neurodegeneration?, 2018, Molecular Neurobiology' | 5 | GPX4 has some relevance to circulating leukocytes immune biology due to its antioxidant function, though it's not the primary focus in this context. | 'Iuchi, Glutathione Peroxidase 4 Overexpression Inhibits ROS-Induced Cell Death in Diffuse Large B-cell Lymphoma, 2017, Lab Invest' | 4 | GPX4 has been identified as a possible drug target, especially in the field of cancer biology where ferroptosis—a form of cell death that GPX4 inhibits—is being explored. | 'Yang, Regulation of ferroptotic cancer cell death by GPX4, 2014, Cell' | 7 | The gene's role in antioxidant responses and lipid peroxidation can make it relevant for immune-mediated diseases, but it's not a primary target at this point. | 'Friedmann Angeli, Inactivation of the ferroptosis regulator Gpx4 triggers acute renal failure in mice, 2014, Nature Cell Biology' | 6 |"
+statements:
+- "The gene is associated with erythroid cells or erythropoiesis."
+- "The gene is currently being used as a biomarker in clinical settings."
+- "The gene has potential value as a blood transcriptional biomarker."
+- "The gene is relevant to circulating leukocytes immune biology."
+- "The gene is a known drug target."
+- "The gene is therapeutically relevant for immune-mediated diseases."
+output_path_for_score: "score_output_20231227.tsv"
+
+# For gene_selection container
+selection_prompt: "Could you select a top candidate based on: relevance to (1) erythroid cells or erythropoiesis, (2) current use as a biomarker, (3) potential use as a blood transcriptional biomarker, (4) relevance to leukocytes immune biology, (5) being a known drug target, and 6) being of therapeutic relevance for immune mediated diseases? Equal weight should be given to each of those 6 criteria."
+rnaseq_prompt: "Now that you have provided an initial recommendation based on the summary, take into account the following RNA-sequencing expression data from key immune cell types and whole blood samples. Given the following additional RNA-seq expression data, does your recommended gene selection remain the same? Please explain which gene you would recommend at this stage and why, incorporating both the summarized information provided earlier and RNA-seq data in your rationale."
+output_path_for_selection: "output_20231227.tsv"
+
